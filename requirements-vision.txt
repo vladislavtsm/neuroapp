@@ -1,0 +1,6 @@
+-r requirements.txt
+
+# Optional computer-vision stack.
+# Recommended Python version for this file: 3.10-3.12.
+opencv-python>=4.10
+ultralytics>=8.2

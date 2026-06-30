@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NeuroApp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="workspace">
+        <aside class="panel">
+          <div class="brand">
+            <span class="brand-mark">N</span>
+            <div>
+              <h1>NeuroApp</h1>
+              <p>Детекция самокатов около метро</p>
+            </div>
+          </div>
+
+          <form id="uploadForm" class="toolbox">
+            <label class="drop-zone" for="mediaInput">
+              <input id="mediaInput" name="media" type="file" accept="image/*,video/*">
+              <span class="drop-title">Выберите фото или видео</span>
+              <span id="fileName" class="drop-hint">JPG, PNG, WEBP, MP4, MOV</span>
+            </label>
+
+            <button id="processButton" type="submit">Запустить детекцию</button>
+          </form>
+
+          <div class="status-grid">
+            <div>
+              <span>Модель</span>
+              <strong id="modelStatus">Проверка...</strong>
+            </div>
+            <div>
+              <span>Объектов</span>
+              <strong id="countValue">0</strong>
+            </div>
+            <div>
+              <span>Уверенность</span>
+              <strong id="confidenceValue">0.00</strong>
+            </div>
+          </div>
+
+          <div class="report-actions">
+            <a href="/reports/excel">Excel</a>
+            <a href="/reports/pdf">PDF</a>
+          </div>
+        </aside>
+
+        <section class="viewer">
+          <div class="result-stage">
+            <img id="resultImage" alt="Результат детекции">
+            <div id="emptyState" class="empty-state">
+              <strong>Результат появится здесь</strong>
+              <span>После обработки приложение покажет найденные объекты и bounding boxes.</span>
+            </div>
+          </div>
+
+          <div class="details">
+            <section>
+              <h2>Найденные объекты</h2>
+              <div id="labelsList" class="labels-list"></div>
+            </section>
+            <section>
+              <h2>История запросов</h2>
+              <div id="historyList" class="history-list"></div>
+            </section>
+          </div>
+        </section>
+      </section>
+    </main>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
